@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Employee {
   id String @id @default(cuid())
   firstName String
   lastName String
