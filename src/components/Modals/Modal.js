@@ -10,7 +10,7 @@ export default function AddEmployeeModal({
 }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [salary, setSalary] = useState(null);
+  const [salary, setSalary] = useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
@@ -70,7 +70,7 @@ export default function AddEmployeeModal({
               Salary:
               <input
                 required={true}
-                inputmode="numeric"
+                inputMode="numeric"
                 pattern="[0-9]"
                 className="text-black border-2 border-slate-500 rounded-lg ml-2"
                 name="salary"

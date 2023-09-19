@@ -3,7 +3,7 @@
 import MyButton from "../Buttons/MyButton";
 import { useState } from "react";
 import { Employee } from "@/utils/utils";
-export default function UserTable({ employees }) {
+export default function UserTable({ employees, handleDelete }) {
   return (
     <table className="mx-auto w-full text-left my-4">
       <thead>
@@ -22,6 +22,14 @@ export default function UserTable({ employees }) {
             <td>{employee.firstName}</td>
             <td>{employee.lastName}</td>
             <td>{employee.salary}</td>
+            <td>
+              <MyButton
+                variant={"primary"}
+                onClick={() => handleDelete(employee)}
+              >
+                Delete
+              </MyButton>
+            </td>
           </tr>
         ))}
       </tbody>
