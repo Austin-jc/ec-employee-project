@@ -3,7 +3,12 @@ import { useState } from "react";
 import UserTable from "./Tables/UserTable";
 import MyButton from "./Buttons/MyButton";
 import Modal from "./Modals/Modal";
-import { getEmployees, createEmployee, deleteEmployee } from "@/utils/api";
+import {
+  getEmployees,
+  createEmployee,
+  deleteEmployee,
+  patchEmployee,
+} from "@/utils/api";
 
 export default function HomePage({ employees }) {
   const [showModal, setShowModal] = useState(false);
@@ -11,6 +16,12 @@ export default function HomePage({ employees }) {
 
   const handleDelete = async (employee) => {
     await deleteEmployee(employee);
+    const newList = await getEmployees();
+    setEmployeeList(newList);
+  };
+
+  const handleUpdate = async (employee) => {
+    await patchEmployee(employee);
     const newList = await getEmployees();
     setEmployeeList(newList);
   };
@@ -26,7 +37,11 @@ export default function HomePage({ employees }) {
           setEmployeeList(e);
         }}
       />
-      <UserTable employees={employeeList} handleDelete={handleDelete} />
+      <UserTable
+        employees={employeeList}
+        handleDelete={handleDelete}
+        handleUpdate={handleUpdate}
+      />
       <MyButton variant="primary" onClick={() => setShowModal(true)}>
         Add User
       </MyButton>

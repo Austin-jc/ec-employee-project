@@ -68,7 +68,7 @@ export async function patchEmployee(employee: Employee) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ info }),
+    body: JSON.stringify({ employee: { ...info } }),
   });
   console.log(response);
   if (response.status === 200) {

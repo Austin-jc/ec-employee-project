@@ -1,9 +1,32 @@
 "use client";
 
 import MyButton from "../Buttons/MyButton";
+import TableCell from "../Tables/TableCell";
 import { useState } from "react";
 import { Employee } from "@/utils/utils";
-export default function UserTable({ employees, handleDelete }) {
+export default function EmployeeTable({
+  employees,
+  handleDelete,
+  handleUpdate,
+}) {
+  const [editEmployee, setEditEmployee] = useState(null);
+
+  const handleEdit = async (employee) => {
+    setEditEmployee({ ...employee });
+  };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditEmployee({ ...editEmployee, [name]: value });
+  };
+  const handleConfirmEdit = async () => {
+    console.log(editEmployee);
+    const res = await handleUpdate(editEmployee);
+    setEditEmployee(null);
+  };
+  const handleAbortEdit = async () => {
+    setEditEmployee(null);
+  };
+
   return (
     <table className="mx-auto w-full text-left my-4">
       <thead>
@@ -19,15 +42,65 @@ export default function UserTable({ employees, handleDelete }) {
             key={employee.id}
             className="py-4 border-b border-slate-400 hover:bg-slate-300 transition duration-200"
           >
-            <td>{employee.firstName}</td>
-            <td>{employee.lastName}</td>
-            <td>{employee.salary}</td>
+            <td>
+              <TableCell
+                inputType={"firstName"}
+                employee={employee}
+                editEmployee={editEmployee}
+                handleInputChange={handleInputChange}
+                required={true}
+              />
+            </td>
+            <td>
+              <TableCell
+                inputType={"lastName"}
+                employee={employee}
+                editEmployee={editEmployee}
+                handleInputChange={handleInputChange}
+                required={true}
+              />
+            </td>
+            <td>
+              <TableCell
+                inputType={"salary"}
+                employee={employee}
+                editEmployee={editEmployee}
+                handleInputChange={handleInputChange}
+                required={true}
+              />
+            </td>
             <td>
               <MyButton
-                variant={"primary"}
-                onClick={() => handleDelete(employee)}
+                variant={"tertiary"}
+                onClick={
+                  editEmployee && editEmployee.id === employee.id
+                    ? () => handleConfirmEdit()
+                    : () => handleEdit(employee)
+                }
+                className={"border-green-500 hover:bg-green-500"}
               >
-                Delete
+                {`${
+                  editEmployee && editEmployee.id === employee.id
+                    ? "confirm"
+                    : "edit"
+                }`}
+              </MyButton>
+            </td>
+            <td>
+              <MyButton
+                variant={"tertiary"}
+                onClick={
+                  editEmployee && editEmployee.id === employee.id
+                    ? () => setEditEmployee(null)
+                    : () => handleDelete(employee)
+                }
+                className={"border-red-500 hover:bg-red-500"}
+              >
+                {`${
+                  editEmployee && editEmployee.id === employee.id
+                    ? "Cancel"
+                    : "Delete"
+                }`}
               </MyButton>
             </td>
           </tr>

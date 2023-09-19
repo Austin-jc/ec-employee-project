@@ -41,7 +41,7 @@ export async function PATCH(
 ) {
   const id = params.id;
   const body = await request.json();
-  const { firstName, lastName, salary } = body.userInfo;
+  const { firstName, lastName, salary } = body.employee;
   try {
     const result = await prisma.employee.update({
       where: {
@@ -50,7 +50,7 @@ export async function PATCH(
       data: {
         firstName: firstName,
         lastName: lastName,
-        salary: salary,
+        salary: parseFloat(salary),
       },
     });
     return NextResponse.json(
@@ -58,6 +58,7 @@ export async function PATCH(
       { status: 200 }
     );
   } catch (error) {
+    console.log(await error);
     return NextResponse.json({ message: "Error", error }, { status: 500 });
   }
 }
