@@ -41,14 +41,14 @@ export default function AddEmployeeModal({
         onClose={handleClose}
         sx={{ position: "absolute", top: "30%" }}
       >
-        <div className="flex flex-col p-4 bg-white text-black w-96 mx-auto rounded-xl">
+        <div className="flex flex-col p-4 bg-white dark:bg-dark-500 text-black dark:text-light-600 w-96 mx-auto rounded-xl">
           <div className="text-4xl"> Add Employee </div>
           <form onSubmit={handleSubmit} className="flex flex-col my-4">
             <label className="m-2 flex justify-between">
               First Name:
               <input
                 required={true}
-                className="text-black border-2 border-slate-500 rounded-lg ml-2"
+                className="dark:bg-dark-600 border-2 border-slate-500 rounded-lg ml-2"
                 name="firstName"
                 type="text"
                 value={firstName}
@@ -59,7 +59,7 @@ export default function AddEmployeeModal({
               Last Name:
               <input
                 required={true}
-                className="text-black border-2 border-slate-500 rounded-lg ml-2"
+                className="dark:bg-dark-600 border-slate-500 rounded-lg ml-2"
                 name="lastName"
                 type="text"
                 value={lastName}
@@ -72,7 +72,7 @@ export default function AddEmployeeModal({
                 required={true}
                 inputMode="numeric"
                 pattern="[0-9]"
-                className="text-black border-2 border-slate-500 rounded-lg ml-2"
+                className="dark:bg-dark-600 border-slate-500 rounded-lg ml-2"
                 name="salary"
                 type="number"
                 value={salary}

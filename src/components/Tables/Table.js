@@ -48,7 +48,7 @@ export default function Table({
           {data.map((object) => (
             <tr
               key={object.id}
-              className="py-4  border-b border-slate-400 hover:bg-stone-400 transition duration-200"
+              className="py-4  border-b border-slate-400 hover:bg-stone-400 hover:dark:bg-dark-500 transition-all duration-300"
             >
               {propertyNames.map((propertyName) => {
                 return (
