@@ -53,7 +53,7 @@ export default function HomePage({ employees }) {
   return (
     <div className="w-screen h-screen bg-light-500 dark:bg-dark-700 text-black dark:text-secondary-200 transition-all duration-300">
       <DarkmodeButton />
-      <div className="w-4/5 h-fit rounded-xl mx-auto mt-32 p-4 bg-slate-300 dark:bg-dark-600">
+      <div className="w-4/5 h-fit rounded-xl mx-auto mt-12 p-4 bg-slate-300 dark:bg-dark-600 drop-shadow-2xl">
         <AddEmployeeModal
           open={showModal}
           setOpen={setShowModal}

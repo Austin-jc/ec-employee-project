@@ -28,3 +28,31 @@ yarn dev
 # or
 pnpm dev
 ```
+
+## The App
+
+When visiting the page, this will be the screen shown.
+![Alt text](readme_assets/image-1.png?raw=true)
+
+On load, the page pulls Employee info from the database and renders it in a table as shown above. Each row represents an employee's information.
+
+We can delete a user from the table and the database by clicking on the delete button
+![Alt text](readme_assets/image-2.png)
+
+And we can edit a user in-table by clicking the edit button
+![Alt text](readme_assets/image-3.png)
+
+To edit, simply type inside the text boxes. First Name and Last Name will accept all characters, Salary will accept only numbers (including decimals)\*.
+
+Lastly we can add a new user by clicking the "Add User" button on the bottom left
+![Alt text](readme_assets/image-4.png)
+
+This will launch a Modal where you can fill in user details.
+![Alt text](readme_assets/image-5.png)
+
+To leave the modal without adding a user, either click outside the modal (the gray area) or click on the "Close" button. To Create a user, click on the "Create" button.
+
+One last additional fun feature - DarkMode!
+![Alt text](readme_assets/image-6.png)
+To enable DarkMode, just click on the icon at the top left. It will toggle the two modes!
+![Alt text](image-1.png)
