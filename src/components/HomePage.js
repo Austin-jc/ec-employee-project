@@ -1,6 +1,6 @@
 "use client";
 import { useMemo, useState } from "react";
-import UserTable from "./Tables/UserTable";
+import Table from "./Tables/Table";
 import MyButton from "./Buttons/MyButton";
 import Modal from "./Modals/Modal";
 import {
@@ -9,7 +9,7 @@ import {
   deleteEmployee,
   patchEmployee,
 } from "@/utils/api";
-import { mapEmployees2Id } from "@/utils/utils";
+import { mapEmployees2Id, EmployeeTableColumnMap } from "@/utils/utils";
 
 export default function HomePage({ employees }) {
   const [showModal, setShowModal] = useState(false);
@@ -28,7 +28,6 @@ export default function HomePage({ employees }) {
   const handleUpdate = async (employee) => {
     const updatedEmployee = await patchEmployee(employee);
     const target = employeeIdMap.get(updatedEmployee.id);
-    console.log();
     // update by using reference to avoid rerender
     for (const key in target) {
       if (updatedEmployee[key]) {
@@ -37,25 +36,44 @@ export default function HomePage({ employees }) {
     }
   };
 
+  const employeePropertyNames = Object.keys(employeeList[0]).filter(
+    (property) => {
+      const wanted = EmployeeTableColumnMap.get(property);
+      if (wanted) {
+        return wanted;
+      }
+    }
+  );
+
+  const employeeTableHeaders = employeePropertyNames.map((name) =>
+    EmployeeTableColumnMap.get(name)
+  );
+
   return (
     <div className="w-screen h-screen bg-light text-black">
-      <Modal
-        open={showModal}
-        setOpen={setShowModal}
-        addEmployee={createEmployee}
-        onSubmit={async () => {
-          const e = await getEmployees();
-          setEmployeeList(e);
-        }}
-      />
-      <UserTable
-        employees={employeeList}
-        handleDelete={handleDelete}
-        handleUpdate={handleUpdate}
-      />
-      <MyButton variant="primary" onClick={() => setShowModal(true)}>
-        Add User
-      </MyButton>
+      <div className="w-4/5 h-fit rounded-lg mx-auto mt-32">
+        <Modal
+          open={showModal}
+          setOpen={setShowModal}
+          addEmployee={createEmployee}
+          onSubmit={async () => {
+            const e = await getEmployees();
+            setEmployeeList(e);
+          }}
+        />
+        <Table
+          data={employeeList}
+          headers={employeeTableHeaders}
+          propertyNames={employeePropertyNames}
+          handleDelete={handleDelete}
+          handleUpdate={handleUpdate}
+          isDeletable={true}
+          isEditable={true}
+        />
+        <MyButton variant="primary" onClick={() => setShowModal(true)}>
+          Add User
+        </MyButton>
+      </div>
     </div>
   );
 }
