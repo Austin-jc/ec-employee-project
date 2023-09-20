@@ -74,7 +74,7 @@ export default function EmployeeTable({
                 variant={"tertiary"}
                 onClick={
                   editEmployee && editEmployee.id === employee.id
-                    ? () => handleConfirmEdit()
+                    ? async () => handleConfirmEdit()
                     : () => handleEdit(employee)
                 }
                 className={"border-green-500 hover:bg-green-500"}

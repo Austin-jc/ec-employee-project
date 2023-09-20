@@ -1,3 +1,4 @@
+// client side api
 import { Employee } from "./utils";
 export async function getEmployees() {
   const response = await fetch("/api/employees", {

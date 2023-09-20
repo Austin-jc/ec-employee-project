@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import UserTable from "./Tables/UserTable";
 import MyButton from "./Buttons/MyButton";
 import Modal from "./Modals/Modal";
@@ -9,10 +9,15 @@ import {
   deleteEmployee,
   patchEmployee,
 } from "@/utils/api";
+import { mapEmployees2Id } from "@/utils/utils";
 
 export default function HomePage({ employees }) {
   const [showModal, setShowModal] = useState(false);
   const [employeeList, setEmployeeList] = useState(employees);
+
+  const employeeIdMap = useMemo(() => {
+    return mapEmployees2Id(employees);
+  }, [employees]);
 
   const handleDelete = async (employee) => {
     await deleteEmployee(employee);
@@ -21,9 +26,15 @@ export default function HomePage({ employees }) {
   };
 
   const handleUpdate = async (employee) => {
-    await patchEmployee(employee);
-    const newList = await getEmployees();
-    setEmployeeList(newList);
+    const updatedEmployee = await patchEmployee(employee);
+    const target = employeeIdMap.get(updatedEmployee.id);
+    console.log();
+    // update by using reference to avoid rerender
+    for (const key in target) {
+      if (updatedEmployee[key]) {
+        target[key] = updatedEmployee[key];
+      }
+    }
   };
 
   return (
