@@ -13,7 +13,6 @@ async function main() {
     }
     try {
       const jsonData = JSON.parse(data);
-      console.log(jsonData);
       try {
         await prisma.employee.createMany({
           data: jsonData.employees,
