@@ -34,5 +34,17 @@ export default function MyButton(props) {
       );
     case "icon":
       return <IconButton onClick={onClick}>{children}</IconButton>;
+    case "submit":
+      return (
+        <button
+          type="submit"
+          form={restProps.formId}
+          onClick={onClick}
+          className={`bg-primary-400 hover:bg-primary-500  dark:bg-dark-primary-500 hover:dark:bg-dark-primary-600
+               rounded-full w-24 h-10 transition-all duration-300`}
+        >
+          {children}
+        </button>
+      );
   }
 }

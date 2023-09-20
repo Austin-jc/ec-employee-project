@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import Table from "./Tables/Table";
 import MyButton from "./Buttons/MyButton";
 import DarkmodeButton from "./Buttons/darkmodeButton";
-import Modal from "./Modals/Modal";
+import AddEmployeeModal from "./Modals/AddEmployeeModal";
 import {
   getEmployees,
   createEmployee,
@@ -54,7 +54,7 @@ export default function HomePage({ employees }) {
     <div className="w-screen h-screen bg-light-500 dark:bg-dark-700 text-black dark:text-secondary-200 transition-all duration-300">
       <DarkmodeButton />
       <div className="w-4/5 h-fit rounded-xl mx-auto mt-32 p-4 bg-slate-300 dark:bg-dark-600">
-        <Modal
+        <AddEmployeeModal
           open={showModal}
           setOpen={setShowModal}
           addEmployee={createEmployee}
