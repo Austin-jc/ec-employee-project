@@ -17,8 +17,8 @@ export default function HomePage({ employees }) {
   const [employeeList, setEmployeeList] = useState(employees);
 
   const employeeIdMap = useMemo(() => {
-    return mapEmployees2Id(employees);
-  }, [employees]);
+    return mapEmployees2Id(employeeList);
+  }, [employeeList]);
 
   const handleDelete = async (employee) => {
     await deleteEmployee(employee);
