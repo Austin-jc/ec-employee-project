@@ -5,7 +5,7 @@ export default function MyButton(props) {
       return (
         <button
           onClick={onClick}
-          className={`bg-primary-400 hover:bg-primary-500
+          className={`bg-primary-400 hover:bg-primary-500 border-primary-400
               border-2 rounded-full w-28 h-10 transition duration-200`}
         >
           {children}
@@ -16,7 +16,7 @@ export default function MyButton(props) {
         <button
           onClick={onClick}
           className={`
-              border-secondary-500 hover:bg-secondary-500 border-2 rounded-full w-28 h-10 transition duration-200`}
+              border-secondary-400 hover:bg-secondary-400 border-2 rounded-full w-28 h-10 transition duration-200`}
         >
           {children}
         </button>

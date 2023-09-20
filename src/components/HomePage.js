@@ -50,8 +50,8 @@ export default function HomePage({ employees }) {
   );
 
   return (
-    <div className="w-screen h-screen bg-light text-black">
-      <div className="w-4/5 h-fit rounded-lg mx-auto mt-32">
+    <div className="w-screen h-screen bg-light-500 text-black">
+      <div className="w-4/5 h-fit rounded-xl mx-auto mt-32 p-4 bg-slate-300">
         <Modal
           open={showModal}
           setOpen={setShowModal}
@@ -62,6 +62,7 @@ export default function HomePage({ employees }) {
           }}
         />
         <Table
+          title={"Employees"}
           data={employeeList}
           headers={employeeTableHeaders}
           propertyNames={employeePropertyNames}
