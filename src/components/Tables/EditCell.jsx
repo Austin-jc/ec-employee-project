@@ -21,7 +21,9 @@ export default function EditCell({
           />
         </div>
       ) : (
-        target[propertyName]
+        <div>
+          {`${propertyName === "salary" ? "$" : ""}${target[propertyName]}`}
+        </div>
       )}
     </div>
   );
