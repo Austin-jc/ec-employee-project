@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 async function main() {
+  await prisma.employee.deleteMany();
   const filepath = path.resolve(__filename, "../data.json");
   fs.readFile(filepath, "utf8", async (error: Error, data: any) => {
     if (error) {
@@ -12,9 +13,8 @@ async function main() {
     }
     try {
       const jsonData = JSON.parse(data);
-      console.log(jsonData);
       try {
-        await prisma.user.createMany({
+        await prisma.employee.createMany({
           data: jsonData.employees,
         });
       } catch {
