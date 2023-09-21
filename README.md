@@ -96,4 +96,19 @@ To enable DarkMode, just click on the icon at the top left. It will toggle the t
 
 ## Tests
 
-End to end tests of the main functionality are available in this [branch](https://github.com/Austin-jc/ec-employee-project/tree/add-tests). Tests were written with [Cypress](https://www.cypress.io/).
+End to end tests of the main functionality are available. Tests were written with [Cypress](https://www.cypress.io/).
+
+To run in the command line:
+
+```
+npx cypress run
+```
+
+To run in the Cypress app (with visuals):
+
+```
+npx cypress open
+```
+
+Select end to end tests when prompted. The resulting screen will look like
+![Alt text](readme_assets/image-9.png)
