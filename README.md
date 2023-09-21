@@ -34,7 +34,7 @@ To run the SQL script:
 
 - If you setup via SQL script will need to run `npm install` to download the required node modules.
 
-5. With the database set up we can then run
+5. With the database set up, and packages installed we can then run
 
 ```bash
 npm run dev
