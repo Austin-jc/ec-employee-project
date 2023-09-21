@@ -16,6 +16,7 @@ export default function HomePage({ employees }) {
   const [showModal, setShowModal] = useState(false);
   const [employeeList, setEmployeeList] = useState(employees);
 
+  // useMemo to prevent mapping on every rerender
   const employeeIdMap = useMemo(() => {
     return mapEmployees2Id(employeeList);
   }, [employeeList]);
@@ -37,7 +38,8 @@ export default function HomePage({ employees }) {
     }
   };
 
-  const employeePropertyNames = Object.keys(employeeList[0]).filter(
+  // {} in case of employeeList === null
+  const employeePropertyNames = Object.keys(employeeList[0] || {}).filter(
     (property) => {
       const wanted = EmployeeTableColumnMap.get(property);
       if (wanted) {

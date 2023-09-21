@@ -25,9 +25,6 @@ export default function Table({
     const res = await handleUpdate(editTarget);
     setEditTarget(null);
   };
-  const handleAbortEdit = async () => {
-    setEditTarget(null);
-  };
 
   return (
     <div className="flex flex-col">
