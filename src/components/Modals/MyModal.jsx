@@ -13,6 +13,7 @@ export default function MyModal({
   return (
     <div>
       <Modal
+        data-cy="Modal"
         open={open}
         onClose={handleClose}
         style={{
