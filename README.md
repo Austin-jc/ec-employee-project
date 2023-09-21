@@ -9,7 +9,7 @@ Built using Nextjs backend, Nextjs/React for frontend, PostgreSQL for the databa
 
 **To establish connection we first must set the database connection string in the environment variables**
 
-1. Open the .env.enviroment file
+1. Open the .env.example file
 2. replace the variable DATABASE_URL with the database connection string for the database we just created
    - This string is in form `postgresql://<username>:<password>@<host>:<port_number>/<db_name>`
    - replace the values in the < > brackets with the corresponding fields. This is what the whole line should look like:
