@@ -32,7 +32,7 @@ export default function Table({
   return (
     <div className="flex flex-col">
       <div className="text-6xl">{title}</div>
-      <table className="mx-auto w-full text-left my-4">
+      <table data-cy="mainTable" className="mx-auto w-full text-left my-4">
         <thead>
           <tr className="border-b border-slate-500">
             {headers.map((header) => {
@@ -67,6 +67,7 @@ export default function Table({
               {isEditable ? (
                 <td>
                   <MyButton
+                    data-cy="editButton"
                     variant={"tertiary"}
                     onClick={
                       editTarget && editTarget.id === object.id
@@ -77,8 +78,8 @@ export default function Table({
                   >
                     {`${
                       editTarget && editTarget.id === object.id
-                        ? "confirm"
-                        : "edit"
+                        ? "Confirm"
+                        : "Edit"
                     }`}
                   </MyButton>
                 </td>
@@ -88,6 +89,7 @@ export default function Table({
               {isDeletable ? (
                 <td>
                   <MyButton
+                    data-cy="deleteButton"
                     variant={"tertiary"}
                     onClick={
                       editTarget && editTarget.id === object.id
