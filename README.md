@@ -15,7 +15,8 @@ Built using Nextjs backend, Nextjs/React for frontend, PostgreSQL for the databa
 3. Change the name of the file from .env.environment to just .env
 
 4. With the new environment variable, we can now either setup using Prisma, or we can run a sql script (in something like PGAdmin).
-   For prisma:
+
+For prisma:
 
 ```
 npm run setup_db
@@ -26,6 +27,8 @@ To run the SQL script:
 - Copy the sql script in the `setup_db.sql` file
 - This can be run in PGAdmin in the query tool
   ![Alt text](readme_assets/image-8.png)
+
+- If you setup via SQL script will need to run `npm install` to download the required node modules.
 
 5. With the database set up we can then run
 

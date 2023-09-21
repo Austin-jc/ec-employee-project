@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "setup_db": "node prep_db.js & npx prisma generate & npx prisma migrate dev --name setup ",
+    "setup_db": "npm install && npx prisma generate_db && npx prisma migrate dev --name setup --skip-seed && npx prisma db seed",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
