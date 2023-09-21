@@ -24,7 +24,7 @@ For prisma:
 npm run setup_db
 ```
 
-`setup_db` will install npm packages as well as create and seed tables. If table with name `Employee` already exists, there may be a conflict, in which case please select yes (y) when prompted.
+`setup_db` will install npm packages as well as create and seed tables. If table with name `Employee` already exists, there may be a conflict, in which case please select yes (y) when prompted (this will erase the old tables so please create a backup).
 
 To run the SQL script:
 
